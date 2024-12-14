@@ -46,7 +46,8 @@ def main():
     model.init_weights()
     model = model.to(cfg.device)
     
-    checkpoint = load_checkpoint(model, './checkpoints/epoch_20.pth', map_location='cpu')
+    # checkpoint = load_checkpoint(model, './checkpoints/epoch_20.pth', map_location='cpu')
+    checkpoint = load_checkpoint(model, './checkpoints/best_bbox_mAP_epoch_13.pth', map_location='cpu')
     
     train_detector(
         model,

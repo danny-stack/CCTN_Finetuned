@@ -54,7 +54,7 @@ python ./CascadeTabNet/Tools/upgrade_model_version.py ./checkpoints/epoch_36.pth
 
 ### 5. Train the model with tools/train_cctn.py and run the prediction with CCTN_Demo.ipynb
 
-## Project Structure
+## Project Structure (Dataset is in Coco mmdetection format)
 ```
 - CCTN_Finetune/  
   - CCTN_dataset/       
