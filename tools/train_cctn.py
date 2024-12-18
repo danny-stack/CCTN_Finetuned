@@ -35,6 +35,14 @@ def main():
         torch.cuda.set_device(0)  
         cfg.gpu_ids = range(1)  # The first GPU only
         cfg.device = 'cuda'
+        
+        # Train with two gpus
+        # cfg.gpu_ids = [0, 1]  
+        # model = build_detector(cfg.model)
+        # if torch.cuda.device_count() > 1:
+        #     model = torch.nn.DataParallel(model)
+        # model.cuda()
+
     else:
         cfg.device = 'cpu'
         cfg.gpu_ids = []

@@ -6,7 +6,8 @@ model = dict(
         init_cfg=dict(
             type='Pretrained',
             checkpoint='open-mmlab://msra/hrnetv2_w32'
-            #prefix='backbone'
+            # checkpoint='https://download.openmmlab.com/mmpose/pretrain_models/hrnet_w32-36af842e.pth'
+            # prefix='backbone'
         ),
         extra=dict(
             stage1=dict(
@@ -306,7 +307,7 @@ lr_config = dict(
     step=[])
 
 # runtime settings
-runner = dict(type='EpochBasedRunner', max_epochs=20)
+runner = dict(type='EpochBasedRunner', max_epochs=10)
 checkpoint_config = dict(interval=2, create_symlink=False) # checkpoint save interval
 evaluation = dict(interval=1, metric=['bbox'],save_best='bbox_mAP',rule='greater')
 

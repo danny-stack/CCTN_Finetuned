@@ -54,6 +54,41 @@ python ./CascadeTabNet/Tools/upgrade_model_version.py ./checkpoints/epoch_36.pth
 
 ### 5. Train the model with tools/train_cctn.py and run the prediction with CCTN_Demo.ipynb
 
+### 6. Docker Usage
+
+### Build Image
+```bash
+docker pull pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel
+docker build -t cctn_finetune:latest .
+```
+
+### Windows
+```bash
+docker run --gpus all ^
+-p 6016:6006 ^
+-v %cd%/configs:/workspace/CCTN_Finetune/configs ^
+-v %cd%/tools:/workspace/CCTN_Finetune/tools ^
+-v %cd%/checkpoints:/workspace/CCTN_Finetune/checkpoints ^
+-v %cd%/CCTN_dataset:/workspace/CCTN_Finetune/CCTN_dataset ^
+-v %cd%/work_dirs:/workspace/CCTN_Finetune/work_dirs ^
+cctn_finetune:latest ./run.sh train
+```
+
+### Linux
+```bash
+docker run --gpus all \
+-p 6006:6006 \
+-v $(pwd)/configs:/workspace/CCTN_Finetune/configs \
+-v $(pwd)/configs:/workspace/CCTN_Finetune/tools \
+-v $(pwd)/checkpoints:/workspace/CCTN_Finetune/checkpoints \
+-v $(pwd)/CCTN_dataset:/workspace/CCTN_Finetune/CCTN_dataset \
+-v $(pwd)/work_dirs:/workspace/CCTN_Finetune/work_dirs \
+cctn_finetune:latest ./run.sh train
+```
+
+### 7. Data Annotation
+Data annotation is done on the https://app.roboflow.com with two classes 0: background; 1：table
+
 ## Project Structure (Dataset is in Coco mmdetection format)
 ```
 - CCTN_Finetune/  
