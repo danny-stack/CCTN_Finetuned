@@ -307,8 +307,10 @@ lr_config = dict(
     step=[])
 
 # runtime settings
+save_checkpoint = True
 runner = dict(type='EpochBasedRunner', max_epochs=10)
-checkpoint_config = dict(interval=2, create_symlink=False) # checkpoint save interval
+if save_checkpoint:
+    checkpoint_config = dict(interval=2, create_symlink=False) # checkpoint save interval
 evaluation = dict(interval=1, metric=['bbox'],save_best='bbox_mAP',rule='greater')
 
 # logger settings
